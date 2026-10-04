@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Soeng Soksreylen's Portfolio</title>
+
+  <style>
+    /* ====== Brand Palette ====== */
+    :root {
+      --metfone-pink: #E91500;
+      --metfone-red: #FDB640;
+
+      --text-dark: #222222;
+      --text-light: #FFFFFF;
+      --bg-light: #F7F7F7;
+      --gray-100: #F1F1F1;
+      --gray-300: #D9D9D9;
+    }
+
+    /* ====== Base ====== */
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--text-dark);
+      background: var(--bg-light);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ====== Header / Nav ====== */
+    header {
+      background: linear-gradient(
+        to right,
+        var(--metfone-pink),
+        var(--metfone-red)
+      );
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      color: #FFFFFF;
+    }
+
+    .menu {
+      display: flex;
+      gap: 22px;
+    }
+
+    .menu a {
+      color: #FFFFFF;
+    }
+
+    .menu a:hover {
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    /* ====== Hero ====== */
+    .hero__inner {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero__image {
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      max-width: 100%;
+    }
+
+    .hero {
+      background: linear-gradient(
+        to right,
+        var(--metfone-pink),
+        var(--metfone-red)
+      );
+      color: var(--text-light);
+      padding: 80px 20px;
+    }
+
+    .hero h1,
+    .hero p {
+      color: #FFFFFF;
+    }
+
+    .hero p {
+      margin: 0 0 24px;
+      font-size: clamp(16px, 2.5vw, 18px);
+      opacity: 0.9;
+    }
+
+    .hero__card {
+      background: #ffffff;
+      border: 1px solid var(--gray-300);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .hero__card h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+      color: #4a4a4a;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: var(--gray-100);
+      border: 1px solid var(--gray-300);
+      color: #333;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+
+    /* ====== Sections ====== */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .section__title {
+      font-size: 22px;
+      margin: 0 0 18px;
+      letter-spacing: 0.2px;
+    }
+
+    .section__desc {
+      margin: 0 0 28px;
+      color: #555;
+    }
+
+    /* ====== Grid Gallery ====== */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid var(--gray-300);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .thumb {
+      aspect-ratio: 4 / 3;
+      background: linear-gradient(
+        135deg,
+        #E91500 0%,
+        #FDB640 100%
+      );
+    }
+
+    .card__body {
+      padding: 14px;
+    }
+
+    .card__title {
+      font-weight: 600;
+      margin: 0 0 6px;
+    }
+
+    .card__meta {
+      font-size: 13px;
+      color: #666;
+    }
+
+    /* ====== Strategic Marketing (case studies) ====== */
+    .case {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .case__item {
+      background: linear-gradient(
+        to right,
+        var(--metfone-pink),
+        var(--metfone-red)
+      );
+      color: #ffffff;
+      border-radius: 14px;
+      padding: 18px;
+      margin: 0 auto 24px;
+      border: none;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .case__item {
+      background: linear-gradient(
+        to right,
+        var(--metfone-pink),
+        var(--metfone-red)
+      );
+      color: #ffffff;
+      border-radius: 14px;
+      padding: 18px;
+      max-width: 540px;
+      margin: 0 auto 24px;
+      border: none;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .case__item h4,
+    .case__item p,
+    .case__item blockquote,
+    .case__item span,
+    .case__item strong,
+    .case__item em {
+      color: #ffffff !important;
+      opacity: 1;
+      text-shadow: 0.5px 0.5px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    /* ====== Videos ====== */
+    .video-row {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .video-block {
+      max-width: 520px;
+      flex: 1 1 320px;
+      text-align: center;
+    }
+
+    .video-compact {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* ====== CTA ====== */
+    .cta {
+      display: inline-block;
+      background: var(--metfone-pink);
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+    }
+
+    .cta:hover {
+      background: var(--metfone-red);
+      color: #222222;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(233, 21, 0, 0.35);
+    }
+
+    .case__item h4 {
+      margin: 0 0 8px;
+    }
+
+    .case__item p {
+      margin: 0;
+      color: #555;
+    }
+
+    /* ====== Footer ====== */
+    footer {
+      background: linear-gradient(
+        to right,
+        #E91500,
+        #FDB640
+      );
+      color: #FFFFFF;
+      border-top: 1px solid var(--gray-300);
+      margin-top: 40px;
+    }
+
+    .footer__inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .footer__inner,
+    .footer__inner a {
+      color: #FFFFFF;
+    }
+
+    .social {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social a {
+      background: #E91500;
+      color: #FFFFFF;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    /* ====== Responsive ====== */
+    @media (max-width: 900px) {
+      .hero__inner {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .case {
+        grid-template-columns: 1fr;
+      }
+
+      .menu {
+        gap: 14px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer__inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .menu {
+        display: none;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .video-row {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ====== Header / Navigation ====== -->
+  <header>
+    <nav class="nav">
+      <div class="brand">Soeng Soksreylen</div>
+
+      <div class="menu">
+        <a href="#about">About Me</a>
+        <a href="#showcase">Design Showcase</a>
+        <a href="#motion">Motion & Media</a>
+        <a href="#marketing">Strategic Marketing</a>
+      </div>
+    </nav>
+  </header>
+
+
+  <!-- ====== Hero ====== -->
+  <section class="hero">
+    <div class="hero__inner">
+
+      <div>
+        <h1>Dear! I'm Seong Soksreylen</h1>
+
+        <p>
+          Graphic Designer | Content Creator | Marketing
+        </p>
+
+        <p>
+          I turn ideas into clear, engaging visual and content experiences that connect brands with people and support business goals.
+        </p>
+
+        <a class="cta" href="#showcase">Explore My Work</a>
+      </div>
+
+      <div class="responsive">
+        <div class="gallery">
+          <a target="_blank" href="Images/len.png">
+            <img src="Images/len.png" alt="Web Development">
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ====== About Me ====== -->
+  <section id="about">
+    <h2 class="section__title">About Me</h2>
+
+    <p class="section__desc">
+      I’m a creative professional with a background in graphic design, content creation, and marketing. I enjoy turning ideas into meaningful visual and written content that communicates clearly, engages audiences, and supports business goals.
+    </p>
+  </section>
+
+
+  <!-- ====== Design Showcase (Grid Gallery) ====== -->
+  <section id="showcase">
+    <h2 class="section__title">Design Showcase</h2>
+
+    <p class="section__desc">
+      Selected projects or click cards to open detailed case studies or full images.
+    </p>
+
+    <div class="grid">
+
+      <!-- Project 1 -->
+      <article class="card">
+        <div class="thumb">
+          <img src="Images/D-1.jpg" alt="Brand System — Retail">
+        </div>
+
+        <div class="card__body">
+          <h3 class="card__title">Visual Identity</h3>
+          <div class="card__meta">Creativity</div>
+        </div>
+      </article>
+
+
+      <article class="card">
+        <div class="thumb">
+          <img src="Images/D-2.jpg" alt="Brand System — Retail">
+        </div>
+
+        <div class="card__body">
+          <h3 class="card__title">Fintech Interface Design</h3>
+          <div class="card__meta">Sleek, tech-savvy</div>
+        </div>
+      </article>
+
+
+      <article class="card">
+        <div class="thumb">
+          <img src="Images/D-3.jpg" alt="Brand System — Retail">
+        </div>
+
+        <div class="card__body">
+          <h3 class="card__title">Social Media Art Direction</h3>
+          <div class="card__meta">Bold, visual</div>
+        </div>
+      </article>
+
+
+      <article class="card">
+        <div class="thumb">
+          <img src="Images/A2.jpg" alt="Brand System — Retail">
+        </div>
+
+        <div class="card__body">
+          <h3 class="card__title">Brand Identity</h3>
+          <div class="card__meta">
+            Evokes dynamic branding and packaging design
+          </div>
+        </div>
+      </article>
+
+
+      <article class="card">
+        <div class="thumb">
+          <img src="Images/R1.jpg" alt="Brand System — Retail">
+        </div>
+
+        <div class="card__body">
+          <h3 class="card__title">Interfaces with Intuition</h3>
+          <div class="card__meta">
+            Suggests smart, user-centered digital design
+          </div>
+        </div>
+      </article>
+
+
+      <article class="card">
+        <div class="thumb">
+          <img src="Images/Y4.png" alt="Brand System — Retail">
+        </div>
+
+        <div class="card__body">
+          <h3 class="card__title">Stories That Spark</h3>
+          <div class="card__meta">
+            Captures the energy of visual campaigns and motion posts
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- ====== Motion & Media ====== -->
+  <section id="motion">
+
+    <h2 class="section__title">Motion & Media</h2>
+
+    <p class="section__desc">
+      Short reels or GIFs—embed videos or Lottie animations here.
+    </p>
+
+       <!-- ====== Real-World Work Experience ====== -->
+  <section id="work">
+
+    <h2 class="section__title">Real-World Work Experience</h2>
+
+    <p class="section__desc">
+      Selected social media and content work created as part of my professional experience.
+    </p>
+
+    <div class="case">
+
+      <div class="case__item">
+
+        <h4>Social Media & Content Creation</h4>
+
+        <p>
+          Created social media content, promotional visuals, captions, and
+          campaign materials to support brand communication and customer engagement.
+        </p>
+
+        <br>
+
+        <a class="cta"
+           href="https://www.facebook.com/share/1BmtAcsdMd/?mibextid=wwXIfr"
+           target="_blank">
+          View Work 01
+        </a>
+
+      </div>
+
+
+      <div class="case__item">
+
+        <h4>Video & Promotional Content</h4>
+
+        <p>
+          Developed promotional videos and digital content for campaigns,
+          events, and social media marketing.
+        </p>
+
+        <br>
+
+        <a class="cta"
+           href="https://www.facebook.com/share/187mTX4j6B/?mibextid=wwXIfr"
+           target="_blank">
+          View Work 02
+        </a>
+
+      </div>
+
+    </div>
+    </section>
+
+
+    <div class="video-row">
+
+      <div class="video-block">
+        <h4>Drink Promotion</h4>
+
+        <video class="video-compact" autoplay muted loop playsinline>
+          <source src="videos/myvideo.mp4/drink.mp4" type="video/mp4">
+        </video>
+      </div>
+
+
+      <div class="video-block">
+        <h4>Halloween Promotion</h4>
+
+        <video class="video-compact" autoplay muted loop playsinline>
+          <source src="videos/myvideo.mp4/halloween.mp4" type="video/mp4">
+        </video>
+      </div>
+
+
+      <div class="video-block">
+        <h4>Lunch Set</h4>
+
+        <video class="video-compact" autoplay muted loop playsinline>
+          <source src="videos/myvideo.mp4/lunch-set.mp4" type="video/mp4">
+        </video>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ====== Strategic Marketing (Case Studies) ====== -->
+  <section id="marketing">
+
+    <h2 class="section__title">Strategic Marketing</h2>
+
+    <p class="section__desc">
+      Design with purpose, connecting creative ideas with marketing goals and measurable results.
+    </p>
+
+    <div class="case">
+
+      <div class="case__item">
+
+        <h4>Strategic Design for Modern Marketing</h4>
+
+        <p>
+          Design isn’t just decoration; it’s direction. Every visual choice should support a goal. From campaign concepts to brand systems, I design with purpose combining creativity with real marketing insight.
+        </p>
+
+      </div>
+
+
+      <div class="case__item">
+
+        <h4>Design Backed by Real Marketing Insight</h4>
+
+        <p>
+          I design with strategy in mind. Beyond visuals, I understand content planning, social media, media planning, boosting, captions, and campaign execution. This experience has taught me how creative work can support communication, engagement, and business goals.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+<!-- ====== Footer ====== -->
+  <footer>
+
+    <div class="footer__inner">
+
+      <div>
+        © <span id="year"></span> Soeng Soksreylen — Phnom Penh & Cambodia
+      </div>
+
+      <div class="social">
+
+         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=soengsoksreylen999@gmail.com" target="_blank">
+    Email
+  </a>
+
+        <a href="https://t.me/Malen1712" target="_blank">
+          Telegram
+        </a>
+
+        <a href="https://www.facebook.com/share/1CMQc7vZbx/" aria-label="Facebook">
+          Facebook
+        </a>
+
+        <a href="tel:0964590308" class="cta">
+          Call Now
+        </a>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <script>
+    // Auto-update year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
